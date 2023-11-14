@@ -18,13 +18,19 @@ var selfDividingNumbers = function(left, right) {
 var selfDividingNumbers = function(left, right) {
     let res = [];
     for (i=left; i < right+1; i++){
-        i % 10 === 0? i+=1 : _;
-        let check =`${i}`.split();
+        i % 10 === 0? i+=1 : i;
+        let check =`${i}`.split('');
+        let selfDividing = false;
         check.map(
-            (number)=>{
-                i % number ===0 ? res.pus(i): _;
+            (number)=> {
+                if (selfDividing && i % number===0){
+                    selfDividing = true;
+                    }
+                    else selfDividing= false;
             }
-        )
+            );
+        
+        selfDividing ? res.push(i): i;
 
 
     }
