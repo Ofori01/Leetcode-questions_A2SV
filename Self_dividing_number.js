@@ -18,23 +18,26 @@ var selfDividingNumbers = function(left, right) {
 var selfDividingNumbers = function(left, right) {
     let res = [];
     for (i=left; i < right+1; i++){
-        i % 10 === 0? i+=1 : i;
-        let check =`${i}`.split('');
-        let selfDividing = false;
-        check.map(
-            (number)=> {
-                if (selfDividing && i % number===0){
-                    selfDividing = true;
-                    }
-                    else selfDividing= false;
-            }
-            );
+        if (i % 10 === 0){
+            continue
+        }
         
-        selfDividing ? res.push(i): i;
-
-
+        let selfDividing = true;
+        let n = i;
+        while (n > 0) {
+            let digit = n % 10;
+            if (i % digit !== 0) {
+                selfDividing = false;
+                break;
+            }
+            n = Math.floor(n / 10);
+        }
+        if (selfDividing) {
+            res.push(i);
+        }
     }
     return res
+
     
     
 };
