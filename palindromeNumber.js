@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-    let rev = o;
+    let rev = 0;
     let n = x;
     while (n>=1){
         rev = rev*10 + n%10
